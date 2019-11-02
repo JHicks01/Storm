@@ -60,7 +60,7 @@ print_int(int x)
         index++;
     }
 
-    for (size_t i = index - 1; i < index - 1; i--) {
+    for (size_t i = index; i-- > 0;) {
         uart_write_byte(digits[i] + 48);
     }
 }
@@ -86,7 +86,7 @@ print_hex(unsigned int x)
         index++;
     }
 
-    for (size_t i = index - 1; i < index - 1; i--) {
+    for (size_t i = index; i-- > 0;) {
         uart_write_byte(chars[i]);
     }
 }
