@@ -4,7 +4,7 @@ STORM_CPPFLAGS += -Isrc/
 
 STORM_CFLAGS = -Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wshadow
 STORM_CFLAGS += -std=gnu99
-STORM_CFLAGS += -O2
+STORM_CFLAGS += -O0
 STORM_CFLAGS += -g
 STORM_CFLAGS += -ffreestanding
 STORM_CFLAGS += -fno-strict-aliasing
@@ -21,6 +21,13 @@ SOURCES = \
 	src/kernel/arch/i386/boot_asm.S \
 	src/kernel/arch/i386/io_asm.S \
 	src/kernel/arch/i386/uart.c \
+	src/kernel/arch/i386/cpu/cpu.c \
+	src/kernel/arch/i386/cpu/cpu_asm.S \
+	src/kernel/arch/i386/cpu/cpu_table_descriptors.c \
+	src/kernel/arch/i386/cpu/gdt.c \
+	src/kernel/arch/i386/cpu/gdt_asm.S \
+	src/kernel/arch/i386/cpu/idt.c \
+	src/kernel/arch/i386/cpu/idt_asm.S \
 	src/kernel/bootstrap_print.c \
 	src/kernel/main.c \
 
