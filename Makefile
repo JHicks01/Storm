@@ -1,8 +1,12 @@
 CC = ${CROSS_COMPILER_PATH}
 
-STORM_CPPFLAGS += -Isrc/
+STORM_CPPFLAGS += -Isrc \
+	          -Isrc/kernel \
+	          -Isrc/kernel/arch/i386 \
+	          -Isrc/kernel/arch/i386/cpu \
+	          -Isrc/lib
 
-STORM_CFLAGS = -Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wshadow
+STORM_CFLAGS = -Werror -Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wshadow
 STORM_CFLAGS += -std=gnu99
 STORM_CFLAGS += -O0
 STORM_CFLAGS += -g
@@ -20,6 +24,7 @@ all: $(BINARY)
 SOURCES = \
 	src/kernel/arch/i386/boot_asm.S \
 	src/kernel/arch/i386/io_asm.S \
+	src/kernel/arch/i386/i8259.c \
 	src/kernel/arch/i386/uart.c \
 	src/kernel/arch/i386/cpu/cpu.c \
 	src/kernel/arch/i386/cpu/cpu_asm.S \
@@ -28,8 +33,11 @@ SOURCES = \
 	src/kernel/arch/i386/cpu/gdt_asm.S \
 	src/kernel/arch/i386/cpu/idt.c \
 	src/kernel/arch/i386/cpu/idt_asm.S \
+	src/kernel/arch/i386/cpu/interrupts.c \
+	src/kernel/arch/i386/cpu/interrupts_asm.S \
 	src/kernel/bootstrap_print.c \
 	src/kernel/main.c \
+	src/kernel/panic.c \
 
 OBJECTS = $(patsubst %.S,%.o,$(patsubst %.c,%.o,$(SOURCES)))
 

@@ -1,15 +1,17 @@
-#include "kernel/bootstrap_print.h"
-#include "kernel/arch/i386/cpu/cpu.h"
-#include "kernel/arch/i386/uart.h"
+#include "bootstrap_print.h"
+#include "i8259.h"
+#include "cpu.h"
+#include "uart.h"
 
 void start_kernel(void);
 
 void
 start_kernel(void)
 {
-    cpu_setup();
-    uart_setup();
-
+    cpu_init();
+    i8259_init();
+    uart_init();
+    
     print_str("Bootup complete!\n");
 
     for (;;);
