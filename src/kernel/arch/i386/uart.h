@@ -4,7 +4,7 @@
 #include "stdint.h"
 
 /* Initialize the UART driver. */
-void uart_setup(void);
+void uart_init(void);
 
 /* Write a byte to UART. */
 void uart_write_byte(uint8_t byte);

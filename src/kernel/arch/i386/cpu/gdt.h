@@ -18,7 +18,7 @@
 
 #ifndef __ASSEMBLER__ 
 
-void gdt_setup(void);
+void gdt_init(void);
 
 #endif /* __ASSEMBLER__ */
 

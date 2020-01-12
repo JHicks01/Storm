@@ -21,7 +21,7 @@
 #define UART_LCR_NO_PARITY_BIT   0x0
 
 void
-uart_setup(void)
+uart_init(void)
 {
     /* Set DLAB (Divisor Latch Access Bit) to set Baud divisor. */
     io_write_byte(UART_COM1_PORT + UART_LCR_REG_OFFSET, UART_DLAB_BIT);

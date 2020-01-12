@@ -47,7 +47,7 @@ gdt_data_descriptor_init(struct cpu_segment_descriptor *descriptor)
 }
 
 void
-gdt_setup(void)
+gdt_init(void)
 {
     struct cpu_pseudo_descriptor pseudo_desc;
 
