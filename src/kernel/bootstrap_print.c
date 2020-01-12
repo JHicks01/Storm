@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "kernel/arch/i386/uart.h"
+#include "uart.h"
 #include "bootstrap_print.h"
 
 static char
