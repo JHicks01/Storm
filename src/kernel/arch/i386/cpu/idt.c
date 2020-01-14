@@ -1,7 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "bootstrap_print.h"
 #include "cpu.h"
 #include "cpu_table_descriptors.h"
 #include "gdt.h"

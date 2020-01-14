@@ -3,7 +3,6 @@
 #include <stdint.h>
 
 #include "assert.h"
-#include "bootstrap_print.h"
 #include "idt.h"
 #include "interrupts.h"
 #include "i8259.h"
