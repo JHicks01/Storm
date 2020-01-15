@@ -28,7 +28,6 @@ SOURCES = \
 	src/kernel/arch/i386/uart.c \
 	src/kernel/arch/i386/cpu/cpu.c \
 	src/kernel/arch/i386/cpu/cpu_asm.S \
-	src/kernel/arch/i386/cpu/cpu_table_descriptors.c \
 	src/kernel/arch/i386/cpu/gdt.c \
 	src/kernel/arch/i386/cpu/gdt_asm.S \
 	src/kernel/arch/i386/cpu/idt.c \
