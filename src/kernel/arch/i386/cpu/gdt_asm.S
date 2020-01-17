@@ -2,7 +2,7 @@
 
 .global load_gdt
 load_gdt:
-        mov 4(%esp), %ebx   /* Pointer to pseudo descriptor. */
+        mov 4(%esp), %eax   /* Pointer to pseudo descriptor. */
         lgdt (%eax)
         mov $GDT_DATA_SEGMENT_SELECTOR, %ax
         mov %ax, %ds
