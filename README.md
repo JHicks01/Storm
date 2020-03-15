@@ -21,7 +21,7 @@ The project uses some open-source libraries to avoid reinventing the wheel and f
 
 - [EmbeddedArtistry libmemory](https://github.com/embeddedartistry/libmemory) - Heap memory management
 - [EmbeddedArtistry embedded-resources](https://github.com/embeddedartistry/embedded-resources) - Linked list
-- [mpaland/printf](https://github.com/mpaland/printf) - ```printf
+- [mpaland/printf](https://github.com/mpaland/printf) - `printf`
 
 ## Current TODOs
 
