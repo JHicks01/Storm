@@ -34,6 +34,7 @@ SOURCES = \
 	src/kernel/arch/i386/cpu/idt_asm.S \
 	src/kernel/arch/i386/cpu/interrupts.c \
 	src/kernel/arch/i386/cpu/interrupts_asm.S \
+	src/kernel/heap.c \
 	src/kernel/main.c \
 	src/kernel/panic.c \
 	src/kernel/putchar.c \
