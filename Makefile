@@ -24,6 +24,7 @@ all: $(BINARY)
 SOURCES = \
 	src/kernel/arch/i386/boot_asm.S \
 	src/kernel/arch/i386/io_asm.S \
+	src/kernel/arch/i386/i8254.c \
 	src/kernel/arch/i386/i8259.c \
 	src/kernel/arch/i386/uart.c \
 	src/kernel/arch/i386/cpu/cpu.c \
