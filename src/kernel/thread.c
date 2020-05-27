@@ -32,6 +32,16 @@ struct thread {
  */
 void thread_load_first_asm(uint32_t stack_ptr);
 
+/*
+ * Assembly interface to context switch.
+ *
+ * The 'current_stack_ptr' argument is updated to hold the stack pointer of the
+ * currently running thread, before the stack pointer is set to 'next_stack_ptr'
+ * and the next thread to run is restored.
+ */
+void thread_context_switch_asm(uint32_t *current_stack_ptr,
+                               uint32_t next_stack_ptr);
+
 static struct thread_run_queue thread_run_queue;
 
 static struct thread *idle_thread;
@@ -86,6 +96,12 @@ thread_load_first(struct thread *thread)
     thread_load_first_asm(thread->stack_ptr);
 }
 
+static void
+thread_context_switch(struct thread *current, struct thread *next)
+{
+    thread_context_switch_asm(&current->stack_ptr, next->stack_ptr);
+}
+
 static struct thread *
 thread_get_current(void)
 {
@@ -96,6 +112,12 @@ static void
 thread_set_current(struct thread *thread)
 {
     current_thread = thread;
+}
+
+static bool
+thread_is_idle(const struct thread *thread)
+{
+    return (thread == idle_thread);
 }
 
 static struct thread *
@@ -113,6 +135,24 @@ thread_get_next(void)
 }
 
 static void
+thread_reschedule(void)
+{
+    struct thread *current, *next;
+
+    current = thread_get_current();
+
+    next = thread_get_next();
+
+    thread_set_current(next);
+
+    if ((!thread_is_idle(current)) && (current->ready)) {
+        thread_run_queue_add(&thread_run_queue, current);
+    }
+
+    thread_context_switch(current, next);
+}
+
+static void
 thread_main(thread_fn_t fn, void *arg)
 {
     struct thread *current;
@@ -123,9 +163,7 @@ thread_main(thread_fn_t fn, void *arg)
 
     current->ready = false;
 
-    for (;;) {
-        /* TODO: Trigger reschedule. */
-    }
+    thread_reschedule();
 }
 
 static void
