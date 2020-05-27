@@ -1,6 +1,12 @@
 // Copyright Embedded Artistry LLC 2017
 // Released under CC0 1.0 Universal License
 //
+// Changes to original listed below:
+//
+// Added list_init() to for run-time initialization (vs static LIST_INIT).
+//
+// Added list_node_init() for node initialization.
+//
 // Some minor changes have been made to satisfy naming preferences:
 // struct ll_head -> struct list.
 // typedef to ll_t left untouched so that other Embedded Artistry libs can use
@@ -69,6 +75,18 @@ typedef struct list {
 
 #define list_INIT(name)	{ &(name), &(name) }
 #define LIST_INIT(name)		struct list name = list_INIT(name)
+
+static inline void list_init(struct list *n)
+{
+    n->next = n;
+    n->prev = n;
+}
+
+static inline void list_node_init(struct list *n)
+{
+    n->next = NULL;
+    n->prev = NULL;
+}
 
 static inline void list_insert(struct list *n, struct list *prev,
 		struct list *next)
