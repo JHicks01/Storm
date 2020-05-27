@@ -1,8 +1,10 @@
+#include "assert.h"
 #include "cpu.h"
 #include "heap.h"
 #include "i8254.h"
 #include "i8259.h"
 #include "printf.h"
+#include "thread.h"
 #include "uart.h"
 
 #define STORM_TIMER_FREQ 100
@@ -18,9 +20,11 @@ start_kernel(void)
     uart_init();
     heap_init();
 
-    cpu_enable_interrupts();
-    
-    printf("Bootup complete!\n");
+    assert(!thread_init());
 
-    for (;;);
+    cpu_enable_interrupts();
+
+    thread_start_scheduler();
+
+    /* Never reached. */
 }

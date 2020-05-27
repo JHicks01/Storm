@@ -26,6 +26,7 @@ SOURCES = \
 	src/kernel/arch/i386/io_asm.S \
 	src/kernel/arch/i386/i8254.c \
 	src/kernel/arch/i386/i8259.c \
+	src/kernel/arch/i386/thread_asm.S \
 	src/kernel/arch/i386/uart.c \
 	src/kernel/arch/i386/cpu/cpu.c \
 	src/kernel/arch/i386/cpu/cpu_asm.S \
@@ -39,6 +40,7 @@ SOURCES = \
 	src/kernel/main.c \
 	src/kernel/panic.c \
 	src/kernel/putchar.c \
+	src/kernel/thread.c \
 	src/lib/printf.c
 
 OBJECTS = $(patsubst %.S,%.o,$(patsubst %.c,%.o,$(SOURCES)))
